@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- header / logo area could go here if needed -->
+        <header class="main-header fade-in">
+            <img src="logo.png" alt="Laundryheap Logo" class="logo">
+            <h1>Laundryheap</h1>
+
+        </header>
+
+        <!-- LANDING PAGE -->
+        <section id="landing-section" class="landing-view fade-in">
+            <div class="card-container" style="justify-content: center;">
+                <div class="card" id="btn-reschedule">
+                    <div class="card-icon">📅</div>
+                    <h2>Reschedule</h2>
+                    <p>Update delivery or pickup re-schedules.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESCHEDULE FORM -->
+        <section id="reschedule-section" class="form-view hidden">
+            <button class="btn-back">← Back</button>
+            <p
+                style="font-weight: bold; color: black; margin-bottom: 10px; text-align: center; width: 100%; max-width: 800px;">
+                Note: Add one data at a time for PD or the Facility</p>
+            <div class="form-card slide-up">
+                <h2>Reschedule Details</h2>
+
+                <form id="form-reschedule">
+                    <!-- COMMON DETAILS (Top) -->
+                    <div class="form-group">
+                        <label for="r-your-name">Your Name</label>
+                        <input type="text" id="r-your-name" name="entry.1434803416" required
+                            placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="r-facility">Facility</label>
+                        <input type="text" id="r-facility" name="entry.1739884741" placeholder="e.g. Warehouse A">
+                    </div>
+                    <div class="form-group">
+                        <label for="r-moved-to">Moved To</label>
+                        <select id="r-moved-to" name="entry.518069798" required>
+                            <option value="" disabled selected>Select option</option>
+                            <option value="AM to PM">AM to PM</option>
+                            <option value="PM to NGT">PM to NGT</option>
+                            <option value="NGT to Tomorrow">NGT to Tomorrow</option>
+                        </select>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+
+                    <!-- DRIVER 1 (Always Visible) -->
+                    <div class="driver-block" id="driver-1">
+                        <h3 style="color: var(--primary-color); margin-bottom: 15px;">Driver 1</h3>
+                        <div class="form-group">
+                            <label>Driver Name</label>
+                            <!-- Using data-entry-id for JS mapping -->
+                            <input type="text" class="d-name" data-entry-id="entry.1468240365" required
+                                placeholder="Enter driver name">
+                        </div>
+                        <div class="form-group">
+                            <label>Reason</label>
+                            <select class="d-reason" data-entry-id="entry.6927900" required>
+                                <option value="" disabled selected>Select a reason</option>
+                                <option value="Over utilisation">Over utilisation</option>
+                                <option value="PD ending late">PD ending late</option>
+                                <option value="PD finished the region">PD finished the region</option>
+                                <option value="Parking Issue">Parking Issue</option>
+                                <option value="Unable to gain access">Unable to gain access</option>
+                                <option value="Vehicle breakdown">Vehicle breakdown</option>
+                                <option value="Driver Cancellation">Driver Cancellation</option>
+                                <option value="LOGS error">LOGS error</option>
+                                <option value="Order not reflecting">Order not reflecting</option>
+                                <option value="Road Closure">Road Closure</option>
+                                <option value="Vehicle capacity issue">Vehicle capacity issue</option>
+                                <option value="PD denial">PD denial</option>
+                                <option value="No AM in the region">No AM in the region</option>
+                                <option value="No PM in the region">No PM in the region</option>
+                                <option value="Market Closure">Market Closure</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Deliveries Count</label>
+                                <input type="number" class="d-deliveries" data-entry-id="entry.835758498" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Pickups Count</label>
+                                <input type="number" class="d-pickups" data-entry-id="entry.1669061386" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DRIVER 2 (Hidden) -->
+                    <div class="driver-block hidden" id="driver-2"
+                        style="border-top: 1px dashed #ccc; padding-top: 20px; margin-top: 20px;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 15px;">Driver 2 <span
+                                style="font-size:0.8rem; color:red; cursor:pointer;"
+                                onclick="this.parentElement.parentElement.classList.add('hidden')">(Remove)</span></h3>
+                        <div class="form-group">
+                            <label>Driver Name</label>
+                            <input type="text" class="d-name" data-entry-id="entry.1468240365"
+                                placeholder="Enter driver name">
+                        </div>
+                        <div class="form-group">
+                            <label>Reason</label>
+                            <select class="d-reason" data-entry-id="entry.6927900">
+                                <option value="" disabled selected>Select a reason</option>
+                                <option value="Over utilisation">Over utilisation</option>
+                                <option value="PD ending late">PD ending late</option>
+                                <option value="PD finished the region">PD finished the region</option>
+                                <option value="Parking Issue">Parking Issue</option>
+                                <option value="Unable to gain access">Unable to gain access</option>
+                                <option value="Vehicle breakdown">Vehicle breakdown</option>
+                                <option value="Driver Cancellation">Driver Cancellation</option>
+                                <option value="LOGS error">LOGS error</option>
+                                <option value="Order not reflecting">Order not reflecting</option>
+                                <option value="Road Closure">Road Closure</option>
+                                <option value="Vehicle capacity issue">Vehicle capacity issue</option>
+                                <option value="PD denial">PD denial</option>
+                                <option value="No AM in the region">No AM in the region</option>
+                                <option value="No PM in the region">No PM in the region</option>
+                                <option value="Market Closure">Market Closure</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Deliveries Count</label>
+                                <input type="number" class="d-deliveries" data-entry-id="entry.835758498" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Pickups Count</label>
+                                <input type="number" class="d-pickups" data-entry-id="entry.1669061386" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DRIVER 3 (Hidden) -->
+                    <div class="driver-block hidden" id="driver-3"
+                        style="border-top: 1px dashed #ccc; padding-top: 20px; margin-top: 20px;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 15px;">Driver 3 <span
+                                style="font-size:0.8rem; color:red; cursor:pointer;"
+                                onclick="this.parentElement.parentElement.classList.add('hidden')">(Remove)</span></h3>
+                        <div class="form-group">
+                            <label>Driver Name</label>
+                            <input type="text" class="d-name" data-entry-id="entry.1468240365"
+                                placeholder="Enter driver name">
+                        </div>
+                        <div class="form-group">
+                            <label>Reason</label>
+                            <select class="d-reason" data-entry-id="entry.6927900">
+                                <option value="" disabled selected>Select a reason</option>
+                                <option value="Over utilisation">Over utilisation</option>
+                                <option value="PD ending late">PD ending late</option>
+                                <option value="PD finished the region">PD finished the region</option>
+                                <option value="Parking Issue">Parking Issue</option>
+                                <option value="Unable to gain access">Unable to gain access</option>
+                                <option value="Vehicle breakdown">Vehicle breakdown</option>
+                                <option value="Driver Cancellation">Driver Cancellation</option>
+                                <option value="LOGS error">LOGS error</option>
+                                <option value="Order not reflecting">Order not reflecting</option>
+                                <option value="Road Closure">Road Closure</option>
+                                <option value="Vehicle capacity issue">Vehicle capacity issue</option>
+                                <option value="PD denial">PD denial</option>
+                                <option value="No AM in the region">No AM in the region</option>
+                                <option value="No PM in the region">No PM in the region</option>
+                                <option value="Market Closure">Market Closure</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Deliveries Count</label>
+                                <input type="number" class="d-deliveries" data-entry-id="entry.835758498" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Pickups Count</label>
+                                <input type="number" class="d-pickups" data-entry-id="entry.1669061386" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: right; margin-top: 10px;">
+                        <button type="button" id="btn-add-driver"
+                            style="background: none; border: none; color: var(--primary-color); cursor: pointer; font-weight: bold;">+
+                            Add Driver</button>
+                    </div>
+
+                    <br>
+                    <hr>
+                    <br>
+
+                    <!-- COMMON DETAILS (Bottom) -->
+                    <div class="form-group">
+                        <label for="r-slack">Slack ID</label>
+                        <input type="text" id="r-slack" name="entry.1701004695" required placeholder="@username">
+                    </div>
+                    <div class="form-group">
+                        <label for="r-comments">Comments (Optional)</label>
+                        <textarea id="r-comments" name="entry.1090375788" rows="2"
+                            placeholder="Any additional comments..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Request</button>
+                </form>
+            </div>
+        </section>
+
+
+
+        <!-- THANK YOU PAGE -->
+        <section id="thankyou-section" class="form-view hidden">
+            <div class="form-card fade-in" style="text-align: center;">
+                <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+                <h2 style="border-bottom: none;">Thank You!</h2>
+                <p style="font-size: 1.2rem; color: #555; margin-bottom: 30px;">Your submission has been received
+                    successfully.</p>
+                <button id="btn-home" class="btn-submit">Home</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,332 @@
+:root {
+    --primary-color: #0890F1;
+    --accent-color: #FFD06D;
+    --bg-gradient: linear-gradient(135deg, #0890F1);
+    --text-color: #2c3e50;
+    --card-bg: var(--accent-color);
+    --input-bg: #f0f4f8;
+    --transition-speed: 0.3s;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --button-text-color: #000000;
+}
+
+/* Light mode specific button rule (Black buttons requested) */
+body:not(.dark-mode) .btn-submit,
+body:not(.dark-mode) .btn-back {
+
+    color: #FFD06D;
+    /* Yellow text on black button? or White? assuming Yellow based on theme */
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    /* Parallax-like effect */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    position: relative;
+    perspective: 1000px;
+}
+
+/* Header */
+.main-header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--accent-color);
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 60px;
+    /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.main-header p {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+/* Hidden Utility */
+.hidden {
+    display: none !important;
+}
+
+/* Landing Page Cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(8, 144, 241, 0.2);
+    border-color: var(--primary-color);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: #FFD06D;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--primary-color);
+    transition: background-color var(--transition-speed);
+}
+
+.card:hover .card-icon {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.card h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.card p {
+    color: var(--primary-color);
+    line-height: 1.5;
+}
+
+/* Forms */
+.form-view {
+    position: relative;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.btn-back:hover {
+    transform: translateX(-5px);
+}
+
+.form-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    border-top: 5px solid var(--primary-color);
+}
+
+.form-card h2 {
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    border-bottom: 2px solid #f0f4f8;
+    padding-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    background-color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(8, 144, 241, 0.1);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Specific styling for the second form theme accent if needed */
+#timeslot-section .form-card {
+    border-top-color: var(--accent-color);
+}
+
+#timeslot-section .btn-submit {
+    background: var(--accent-color);
+    color: #4a3b10;
+    /* Darker text for contrast on yellow */
+}
+
+#timeslot-section .btn-submit:hover {
+    background: #e6bc62;
+    transform: translateY(-2px);
+}
+
+/* File Upload */
+.file-upload-group {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.file-upload-group input[type="file"] {
+    display: none;
+}
+
+.file-label {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border: 2px dashed #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s;
+    background: #fafafa;
+}
+
+.file-label:hover {
+    border-color: var(--accent-color);
+    background: #fffcf5;
+}
+
+.file-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+.file-preview img {
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+    box-shadow: 0 5px 15px rgba(8, 144, 241, 0.3);
+}
+
+.btn-submit:hover {
+    background: #0077c8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(8, 144, 241, 0.4);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
