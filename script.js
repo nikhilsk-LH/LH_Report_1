@@ -1,3 +1,17 @@
+var btnAddDriver = document.getElementById('btn-add-driver');
+var driver2 = document.getElementById('driver-2');
+var driver3 = document.getElementById('driver-3');
+
+if (btnAddDriver) {
+    btnAddDriver.addEventListener('click', function () {
+        if (driver2.classList.contains('hidden')) {
+            driver2.classList.remove('hidden');
+        } else if (driver3.classList.contains('hidden')) {
+            driver3.classList.remove('hidden');
+            btnAddDriver.style.display = 'none'; // Hide button after adding max drivers
+        }
+    });
+}
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
     const landingSection = document.getElementById('landing-section');
@@ -58,7 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Form Submissions
-    // Add Driver Button Logic
+    // Add Driver Button Logic (Already initialized above, but moving listeners inside DOMContentLoaded is safer usually. Since I declared vars above, I'll just leave the listeners or move them here. The vars above accessed DOM before LOAD? Wait. No, I put them outside. Actually better to have everything inside.)
+
+    // REDOING THE VARS INSIDE
     const btnAddDriver = document.getElementById('btn-add-driver');
     const driver2 = document.getElementById('driver-2');
     const driver3 = document.getElementById('driver-3');
@@ -74,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
     // Form Submissions
     document.getElementById('form-reschedule').addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -84,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.textContent = 'Submitting...';
         submitBtn.disabled = true;
 
-        // Google Forms Action URL
-        const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf2_-oxjupMblR_2yOunYZkkGPpKLyicq52Wy7S83S-Fne7Gg/formResponse';
+        // Google Forms Action URL - UPDATED
+        const GOOGLE_FORM_URL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2_-oxjupMblR_2yOunYZkkGPpKLyicq52Wy7S83S-Fne7Gg/formResponse';
 
         // 1. Collect Common Data
         const commonData = {
@@ -138,7 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return fetch(GOOGLE_FORM_URL, {
                     method: 'POST',
                     body: formData,
-                    mode: 'no-cors'
+                    mode: 'no-cors',
+                    credentials: 'include' // Important for internal forms
                 });
             });
 
