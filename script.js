@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Collect Common Data
         const commonData = {
             'entry.1434803416': document.getElementById('r-your-name').value, // Your Name
-            'entry.1739884741': document.getElementById('r-region').value, // Region
+            'entry.1569093023': document.getElementById('r-region').value,   // Region
+            'entry.1739884741': document.getElementById('r-facility').value, // Facility
             'entry.518069798': document.getElementById('r-moved-to').value,  // Moved To
             'entry.1701004695': document.getElementById('r-slack').value,    // Slack ID
             'entry.1090375788': document.getElementById('r-comments').value // Comments
