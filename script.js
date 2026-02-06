@@ -1,17 +1,3 @@
-var btnAddDriver = document.getElementById('btn-add-driver');
-var driver2 = document.getElementById('driver-2');
-var driver3 = document.getElementById('driver-3');
-
-if (btnAddDriver) {
-    btnAddDriver.addEventListener('click', function () {
-        if (driver2.classList.contains('hidden')) {
-            driver2.classList.remove('hidden');
-        } else if (driver3.classList.contains('hidden')) {
-            driver3.classList.remove('hidden');
-            btnAddDriver.style.display = 'none'; // Hide button after adding max drivers
-        }
-    });
-}
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
     const landingSection = document.getElementById('landing-section');
